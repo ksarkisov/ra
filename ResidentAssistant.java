@@ -10,8 +10,8 @@ public class ResidentAssistant extends CollegeStudent{
 	
 	
 	//initialize the ra's info
-	public ResidentAssistant(String n, String m, String d, double b) {
-		super(n, m, d, b);
+	public ResidentAssistant(String name, String major, String dorm, double board) {
+		super(name, major, dorm, board);
 	}
 	
 	
@@ -61,9 +61,23 @@ public class ResidentAssistant extends CollegeStudent{
 	}
 	
 	
-	public void getStipend() {
+	public double getBoard() {
 		
+		double boardDiscount = 0;
+		
+		for(int i = 0; i < students.length; i ++) {
+			
+			boardDiscount += students[i].getBoard() * 0.05;
+		}
+		
+		double board = super.getBoard() - boardDiscount;
+		
+		if(board < 0)
+			return 0;
+		
+		return board;
 	}
+	
 	
 	public String toString() {
 		String toReturn = "RA " + super.toString();
